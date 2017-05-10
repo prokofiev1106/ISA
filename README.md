@@ -21,7 +21,8 @@ Introducción
 Despliegue
 ==========
 
-* Para desplegar la aplicación, hay que descargar todos los objetos del ***branch*** en un directorio local: 
+* Para desplegar la aplicación, hay que: 
+  * Descargar todos los objetos del ***branch*** en un directorio local. 
   * Crear un acceso directo al archivo ***/dist/Proy_ISA.jar*** 
   * Modificar el acceso directo eliminando el literal ***/dist*** del directorio de trabajo ( ***Iniciar*** ***en:*** en ***Windows*** ).
   * Ejecutar el acceso directo. 
