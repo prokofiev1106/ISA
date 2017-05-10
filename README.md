@@ -1,72 +1,24 @@
-GitHub Markup
-=============
+Introducción
+============
 
-This library is the first step of a journey that every markup file in a repository goes on before it is rendered on GitHub.com:
+* Esta aplicación ha sido desarrollada con motivo de una serie de actividades relacionadas con la asignatura Ingeniería de Software Avanzada (UNIR).
 
-1. This library converts the raw markup to HTML. See the list of [supported markup formats](#markups) below.
-1. The HTML is sanitized, aggressively removing things that could harm you and your kin—such as `script` tags, inline-styles, and `class` or `id` attributes. See the [sanitization filter](https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/sanitization_filter.rb) for the full whitelist.
-1. Syntax highlighting is performed on code blocks. See [github/linguist](https://github.com/github/linguist#syntax-highlighting) for more information about syntax highlighting.
-1. The HTML is passed through other filters in the [html-pipeline](https://github.com/jch/html-pipeline) that add special sauce, such as [emoji](https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/emoji_filter.rb), [task lists](https://github.com/github/task_list/blob/master/lib/task_list/filter.rb), [named anchors](https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb), [CDN caching for images](https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/camo_filter.rb), and  [autolinking](https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/autolink_filter.rb).
-1. The resulting HTML is rendered on GitHub.com.
+* El objetivo de esta aplicación es cubrir una serie de necesidades de información de un Centro de Estética cualquiera, donde se realizan tratamientos 
+  estéticos y se venden productos cosméticos a los clientes.
 
-Please note that **only the first step** is covered by this gem — the rest happens on GitHub.com.  In particular, `markup` itself does no sanitization of the resulting HTML, as it expects that to be covered by whatever pipeline is consuming the HTML.
+* Se trata de una aplicación de escritorio del tipo *Java* *Application* ( *Java* *8* ) que ha sido desarrollada en la plataforma *Netbeans* *IDE* *7.4*.
 
-Please see our [contributing guidelines](CONTRIBUTING.md) before reporting an issue.
+* Para desarrollar su interfaz gráfico se han utilizado forms del tipo *JFrame* (menú principal) y *JDialog* ( resto de forms dependientes del *Jframe* ), 
+  junto a la diversidad de objetos que los contienen ( *JButton*, *JTextField*, *Jpanel*, *JLabel*, *JTable*, *JTextArea*, etc. ), todos ellos junto con sus eventos
+  asociados, correspondientes a *Swing* ( *Framework* *MVC* ).    
 
-Markups
--------
-
-The following markups are supported.  The dependencies listed are required if
-you wish to run the library. You can also run `script/bootstrap` to fetch them all.
-
-* [.markdown, .mdown, .mkdn, .md](http://daringfireball.net/projects/markdown/) -- `gem install commonmarker` (https://github.com/gjtorikian/commonmarker)
-* [.textile](https://www.promptworks.com/textile) -- `gem install RedCloth`
-* [.rdoc](https://rdoc.github.io/rdoc/) -- `gem install rdoc -v 3.6.1`
-* [.org](http://orgmode.org/) -- `gem install org-ruby`
-* [.creole](http://wikicreole.org/) -- `gem install creole`
-* [.mediawiki, .wiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth`
-* [.rst](http://docutils.sourceforge.net/rst.html) -- `python3 -m pip install sphinx`
-* [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
-* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`
-  comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
+* La aplicación utiliza un Sistema de Gestión de Base de Datos *MS* *Access* *2013* (archivo *bbdd.accdb*).
 
 
-Installation
------------
+Despliegue
+==========
 
-```
-gem install github-markup
-```
+* Para desplegar la aplicación, hay que descargar todos los objetos del *branch* en un directorio local, crear un acceso directo al archivo /dist/Proy_ISA, 
+  modificar dicho acceso directo eliminando el literal /dist del directorio de trabajo ( *Iniciar* *en* en *Windows* ), y simplemente ejecutar dicho acceso
+  directo. 
 
-Usage
------
-
-Basic form:
-
-```ruby
-require 'github/markup'
-
-GitHub::Markup.render('README.markdown', '* One\n* Two')
-```
-
-More realistic form:
-
-```ruby
-require 'github/markup'
-
-GitHub::Markup.render(file, File.read(file))
-```
-
-And a convenience form:
-
-```ruby
-require 'github/markup'
-
-GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, '* One\n* Two')
-```
-
-
-Contributing
-------------
-
-See [Contributing](CONTRIBUTING.md).
